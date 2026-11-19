@@ -1,0 +1,15 @@
+services:
+  geo-fill-job:
+    build: .
+    image: geo-fill-job:latest
+    container_name: geo-fill-job
+    restart: always
+    env_file:
+      - .env        # 所有环境变量统一从 .env 读取
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    name: mj-net   # mysql8 容器所在的 docker 网络
+    external: true
